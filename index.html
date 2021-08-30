@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+
+<!-- neomo.css -->
+<link rel="stylesheet" href="https://code4fukui.github.io/neomo.css/neomo.css">
+<!-- sakura.css -->
+<!--
+<link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+-->
+
+<script type="module">
+import { CSV } from "https://js.sabae.cc/CSV.js";
+import { waitClick } from "https://js.sabae.cc/waitClick.js";
+
+onload = async () => {
+  const quizdata = CSV.toJSON(await CSV.fetch("https://code4fukui.github.io/digital-quiz-data/ap-2021spring.csv"));
+  console.log(quizdata);
+  let cnt = 0;
+  for (const qd of quizdata) {
+    q.textContent = qd.q;
+    s1.textContent = qd.s1;
+    s2.textContent = qd.s2;
+    s3.textContent = qd.s3;
+    s4.textContent = qd.s4;
+    choice.value = null;
+    await waitClick(ans);
+    if (choice.value == qd.a) {
+      alert("正解！");
+      cnt++;
+    } else {
+      alert("不正解！正解は" + qd.a);
+    }
+  }
+  alert("正答率は" + (cnt / quizdata.length * 100) + "%!");
+};
+</script>
+
+<style>
+body {
+  margin: 2em;
+}
+#choice label {
+  display: block;
+}
+#ans {
+  margin-top: 2em;
+}
+</style>
+</head><body>
+
+<script type="module" src="https://code4fukui.github.io/input-radio/input-radio.js"></script>
+
+<h1>デジタルクイズ</h1>
+
+<section><section><section>
+
+  <div id=q></div>
+<input-radio id=choice>
+  <option id=s1 value=1>1</option>
+  <option id=s2 value=2>2</option>
+  <option id=s3 value=3>3</option>
+  <option id=s4 value=4>4</option>
+</input-radio>
+<button id=ans>答える</button>
+
+</section></section></section>
+
+</body></html>
