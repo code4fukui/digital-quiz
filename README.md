@@ -1,5 +1,7 @@
 # digital-quiz
 
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 A simple digital quiz web application.
 
 ## Demo
