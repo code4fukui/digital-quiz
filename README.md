@@ -15,4 +15,4 @@ https://code4fukui.github.io/digital-quiz/
 The quiz data is available at: https://github.com/code4fukui/digital-quiz-data/
 
 ## License
-MIT License
+MIT License — see [LICENSE](LICENSE).
